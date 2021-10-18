@@ -1,0 +1,79 @@
+<div class="page">
+  <img class="logoIcon" src="/assets/koncilia-by-skit.png" />
+  <h1>Transacciones</h1>
+  <div class="tableContainer">
+    <table>
+      <thead>
+        <!-- <th>ID</th> -->
+        <!-- <th>ProcessDate</th> -->
+        <th>RuleName</th>
+        <!-- <th>Process</th> -->
+        <!-- <th>lineNumber</th> -->
+        <th>Consistent</th>
+        <th>idTx</th>
+        <!-- <th>fechaPago</th> -->
+        <!-- <th>idCredito</th> -->
+        <th>fechaTransaccion</th>
+        <th>nombreCanal</th>
+        <!-- <th>idDocumento</th>
+        <th>tipoDocumento</th> -->
+        <th>valor</th>
+        <!-- <th>fechaVencimiento</th>
+        <th>descripcion</th> -->
+        <th>producto</th>
+        <th>referencia</th>
+        <th>secuencia</th>
+        <th>canal</th>
+        <th>documento</th>
+        <!-- <th>transaccion</th>
+        <th>causal</th>
+        <th>subcausal</th>
+        <th>autorización</th> -->
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <!-- <td>{{ transaction.id }}</td> -->
+          <!-- <td>{{ transaction.processDate }}</td> -->
+          <td>{{ transaction.ruleName }}</td>
+          <!-- <td>{{ transaction.process }}</td> -->
+          <!-- <td>{{ transaction.lineNumber }}</td> -->
+          <td>{{ transaction.isConsistent }}</td>
+          <td>{{ transaction.idTx }}</td>
+          <!-- <td>{{ transaction.fechaPago }}</td> -->
+          <!-- <td>{{ transaction.idCredito }}</td> -->
+          <td>{{ transaction.fechaTransaccion }}</td>
+          <td>{{ transaction.nombreCanal }}</td>
+          <!-- <td>{{ transaction.idDocumento }}</td>
+          <td>{{ transaction.tipoDocumento }}</td> -->
+          <td>{{ transaction.valor }}</td>
+          <!-- <td>{{ transaction.fechaVencimiento }}</td>
+          <td>{{ transaction.descripcion }}</td> -->
+          <td>{{ transaction.producto }}</td>
+          <td>{{ transaction.referenciaPago }}</td>
+          <td>{{ transaction.secuencia }}</td>
+          <td>{{ transaction.canal }}</td>
+          <td>{{ transaction.documento }}</td>
+          <!-- <td>{{ transaction.transaccion }}</td>
+          <td>{{ transaction.causal }}</td>
+          <td>{{ transaction.subcausal }}</td>
+          <td>{{ transaction.autorizacion }}</td> -->
+
+          <!-- <td>{{ exercise.title }}</td>
+          <td class="options">
+            <fa-icon
+              [icon]="faEye"
+              class="icons"
+              (click)="seeSpiritualExercise(exercise.idExercise)"
+            ></fa-icon>
+            <fa-icon
+              [icon]="faPencilAlt"
+              class="icons"
+              (click)="editSpiritualExercise(exercise.idExercise)"
+            ></fa-icon>
+            <fa-icon [icon]="faTrashAlt" class="icons"></fa-icon>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
