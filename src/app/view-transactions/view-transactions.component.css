@@ -3,43 +3,46 @@
   font-family: "Saira", sans-serif;
   font-weight: bold;
 }
-h1 {
-  left: 0%;
-}
+
 .page {
-  /* background-position: center; */
-  /* background-size: cover; */
-  /* min-height: calc(100vh - 40px - 190px); */
   text-align: center;
 }
 .logoIcon {
-  /* display: block;
-  margin: auto; */
   width: 300px;
   height: 80px;
 }
+.tableContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
 table {
-  /* overflow-x: auto;
-  border-collapse: collapse; */
-  width: 100%;
-  /* margin: 0 auto; */
-  border: 1px solid #ddd;
+  width: 90%;
   align-items: center;
+  text-align: center;
+  border: 1px solid #ddd;
 }
 th {
   background-color: rgb(35, 78, 103);
   color: white;
-  font-size: 15px;
-  width: 800px;
+  font-size: 12px;
 }
 td {
-  font-size: 12px;
-  border: 1px solid #ddd;
+  font-size: 10px;
+}
+
+.icons {
+  font-size: 10px;
   width: 800px;
 }
 
-@media screen and (min-width: 200px) and (max-width: 1500px) {
+@media (max-width: 1045px) {
+  .page {
+    text-align: center;
+  }
   .tableContainer {
+    display: flex;
+    justify-content: center;
     text-align: center;
   }
   table {
@@ -49,9 +52,5 @@ td {
     margin: 0 auto;
     border: 1px solid #ddd;
     align-items: center;
-  }
-  th {
-    background-color: #79d9f1;
-    color: white;
   }
 }

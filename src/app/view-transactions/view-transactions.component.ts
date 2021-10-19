@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Transaction } from '../models/transaction';
 import { TransactionsService } from 'src/app/services/transactionsService.service';
+import {
+  faCheckCircle,
+  faTimesCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-view-transactions',
@@ -10,6 +14,9 @@ import { TransactionsService } from 'src/app/services/transactionsService.servic
 })
 export class ViewTransactionsComponent implements OnInit {
   transactions: Transaction[] = [];
+
+  faCheckCircle = faCheckCircle;
+  faTimesCircle = faTimesCircle;
 
   constructor(
     private router: Router,
