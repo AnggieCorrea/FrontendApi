@@ -13,7 +13,19 @@ export class TransactionsService {
   constructor(private http: HttpClient) {}
 
   //Métodos
-  public getTransactions(): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(this.urlBase);
+  public getTransactions(): Observable<any[]> {
+    return this.http.get<any[]>(this.urlBase);
+  }
+  public getTransactionsPageable(
+    page: number,
+    size: number,
+    isConsistent: boolean,
+    startDate: string,
+    endDate: string
+  ): Observable<Transaction[]> {
+    return this.http.get<any>(
+      this.urlBase +
+        `?pageNumber=${page}&PageSize=${size}&IsConsistent=${isConsistent}&StartDate=${startDate}&EndDate=${endDate}`
+    );
   }
 }
