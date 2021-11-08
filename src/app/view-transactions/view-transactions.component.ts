@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Transaction } from '../models/transaction';
 import { TransactionsService } from 'src/app/services/transactionsService.service';
 import {
   faCheckCircle,
   faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons';
-import { MatTableDataSource } from '@angular/material/table';
+import { Transaction } from '../models/transaction';
+import { PageEvent } from '@angular/material/paginator';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-view-transactions',
@@ -14,42 +15,26 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./view-transactions.component.css'],
 })
 export class ViewTransactionsComponent implements OnInit {
-  dataSource: MatTableDataSource<any>;
-  transactions: Transaction[];
-  displayedColumns: string[] = [
-    'id',
-    'processDate',
-    'ruleName',
-    'process',
-    'lineNumber',
-    'isConsistent',
-    'idTx',
-    'fechaPago',
-    'idCredito',
-    'fechaTransaccion',
-    'nombreCanal',
-    'idDocumento',
-    'tipoDocumento',
-    'valor',
-    'fechaVencimiento',
-    'descripcion',
-    'producto',
-    'referenciaPago',
-    'secuencia',
-    'canal',
-    'documento',
-    'transaccion',
-    'causal',
-    'subcausal',
-    'autorizacion',
-  ];
+  transactions: Transaction[] = [];
 
-  page_size: number = 10;
+  search: string = '';
+
+  page_size: number = 5;
   page_number: number = 1;
-  page_size_options = [10, 50, 100, 500, 1000];
+  from: number = 0;
+  until: number = 5;
   isConsistent: boolean = true;
   startDate: string = '2020-01-01';
   endDate: string = '2021-02-25';
+
+  pageEvent: PageEvent;
+  datasource: null;
+  pageIndex: number;
+  pageSize: number;
+  length: number;
+
+  myControl = new FormControl();
+  options: boolean[] = [true, false];
 
   faCheckCircle = faCheckCircle;
   faTimesCircle = faTimesCircle;
@@ -63,34 +48,18 @@ export class ViewTransactionsComponent implements OnInit {
     this.getTransactions();
   }
 
-  /* getTransactions(): void {
-    this.transactionService
-      .getTransactions()
-      .subscribe((res: Transaction[]) => {
-        console.log(res);
-        this.transactions = res;
-      });
-  } */
-
   getTransactions(): void {
-    this.transactions = [];
-    this.transactionService
-      .getTransactionsPageable(
-        this.page_number,
-        this.page_size,
-        this.isConsistent,
-        this.startDate,
-        this.endDate
-      )
-      .subscribe(
-        (results) => {
-          this.transactions = results;
-          console.log(this.transactions);
-          this.dataSource = new MatTableDataSource(this.transactions);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    this.transactionService.getTransactions().subscribe((transaciones) => {
+      this.transactions = transaciones;
+      console.log(this.transactions);
+    });
+  }
+
+  changePage(e: PageEvent) {
+    console.log(e);
+    this.page_number = e.pageIndex;
+    this.page_size = e.pageSize;
+    this.from = e.pageIndex * e.pageSize;
+    this.until = this.from + e.pageSize;
   }
 }

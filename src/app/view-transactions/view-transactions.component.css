@@ -11,10 +11,25 @@
   width: 300px;
   height: 80px;
 }
+.filtros {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+.example-form {
+  max-width: 200px;
+  margin: 5px;
+}
+
+.picker1 {
+  margin: 0 8px 16px 0;
+}
 .tableContainer {
   display: flex;
   justify-content: center;
   text-align: center;
+  font-size: small;
 }
 table {
   width: 90%;
